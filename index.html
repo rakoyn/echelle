@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide-Based Website</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .swiper {
+            width: 100%;
+            height: 100vh;
+        }
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: black;
+            background: white;
+        }
+        .slide1 {
+            background: linear-gradient(to right, #f0f0f0 60%, white 60%);
+        }
+        .slide1 img {
+            max-width: 40%;
+            max-height: 60%;
+            position: absolute;
+            left: 60%;
+            top: 30%;
+            transform: translate(-50%, -50%);
+        }
+        .slide2 img, .slide3 img {
+            max-width: 40%;
+            max-height: 80%;
+            position: absolute;
+            left: 15%;
+            bottom: 200px;
+            z-index: 1;
+        }
+        .slide2 .under-construction {
+            position: absolute;
+            left: 83.33%; /* 2/3 + 50% του γκρι */
+            top: 50%;
+            transform: translate(-50%, -50%); /* Κεντράρισμα */
+            text-align: center;
+        }
+        .slide2 .under-construction .under {
+            font-size: 6rem; /* Μεγάλο μέγεθος */
+            color: black; /* Μαύρο χρώμα */
+            font-weight: bold; /* Παχιά γράμματα */
+        }
+        .slide2 .under-construction .construction {
+            font-size: 3rem; /* Μισό μέγεθος */
+            color: black; /* Μαύρο χρώμα */
+            font-weight: bold; /* Παχιά γράμματα */
+        }
+        .slide21 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white; /* Προσθήκη background για να μην φαίνονται τα στοιχεία από το slide2 */
+        }
+        .slide21 .love-text {
+            font-size: 4rem; /* Μεγάλο μέγεθος */
+            color: black; /* Μαύρο χρώμα */
+            text-align: center;
+            font-weight: bold; /* Παχιά γράμματα */
+        }
+        .slide3 {
+            background: linear-gradient(to right, white 66.66%, #f0f0f0 66.66%);
+        }
+        .slide3 .soon {
+            font-size: 6rem; /* Πολύ μεγάλο μέγεθος */
+            color: white; /* Λευκό χρώμα */
+            text-align: center;
+            position: absolute;
+            left: 83.33%; /* 2/3 + 50% του γκρι */
+            top: 50%;
+            transform: translate(-50%, -50%); /* Κεντράρισμα */
+            font-weight: bold; /* Παχιά γράμματα */
+        }
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 6.3rem 0;
+            z-index: 1000;
+        }
+        .swiper-button-next, .swiper-button-prev, .swiper-button-down, .swiper-button-up {
+            color: black;
+            position: absolute;
+            z-index: 1000;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        .swiper-button-next {
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .swiper-button-prev {
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .swiper-button-down {
+            bottom: 220px; /* Μετακίνηση πιο ψηλά */
+            left: 50%;
+            transform: translateX(-50%) rotate(90deg);
+        }
+        .swiper-button-up {
+            top: 100px; /* Τοποθετεί το κουμπί στην κορυφή */
+            left: 50%;
+            transform: translateX(-50%) rotate(0deg); /* Περιστροφή προς τα πάνω */
+        }
+        @media (max-width: 768px) {
+            .slide2 .under-construction .under {
+                font-size: 4rem; /* Μικρότερο μέγεθος για μικρές οθόνες */
+            }
+            .slide2 .under-construction .construction {
+                font-size: 2rem; /* Μικρότερο μέγεθος για μικρές οθόνες */
+            }
+            .slide21 .love-text {
+                font-size: 3rem; /* Μικρότερο μέγεθος για μικρές οθόνες */
+            }
+            .slide3 .soon {
+                font-size: 4rem; /* Μικρότερο μέγεθος για μικρές οθόνες */
+            }
+        }
+        @media (max-width: 480px) {
+            .slide2 .under-construction .under {
+                font-size: 3rem; /* Ακόμα μικρότερο μέγεθος για πολύ μικρές οθόνες */
+            }
+            .slide2 .under-construction .construction {
+                font-size: 1.5rem; /* Ακόμα μικρότερο μέγεθος για πολύ μικρές οθόνες */
+            }
+            .slide21 .love-text {
+                font-size: 2rem; /* Ακόμα μικρότερο μέγεθος για πολύ μικρές οθόνες */
+            }
+            .slide3 .soon {
+                font-size: 3rem; /* Ακόμα μικρότερο μέγεθος για πολύ μικρές οθόνες */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="swiper horizontal-swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide slide1">
+                <img src="index.files/logo_square.png" alt="Εικόνα">
+            </div>
+            <div class="swiper-slide vertical-swiper-container">
+                <div class="swiper vertical-swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide slide2" id="slide-2">
+                            <img src="index.files/crane.png" alt="Crane">
+                            <div class="under-construction">
+                                <div class="under">Under</div>
+                                <div class="construction">Construction</div>
+                            </div>
+                            <div class="swiper-button-down">→</div>
+                        </div>
+                        <div class="swiper-slide slide21" id="slide-21">
+                            <div class="love-text">Σ' αγαπώ πολύ κοριτσάκι μου</div>
+                            <div class="swiper-button-up">↑</div> <!-- Προσθήκη του κουμπιού -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide slide3">
+                <img src="index.files/crane.png" alt="Crane">
+                <div class="soon">Soon...</div>
+            </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+    <footer></footer>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        // Οριζόντιος Swiper
+        const horizontalSwiper = new Swiper(".horizontal-swiper", {
+            direction: "horizontal",
+            loop: true,
+            allowTouchMove: true,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+
+        // Κατακόρυφος Swiper
+        const verticalSwiper = new Swiper(".vertical-swiper", {
+            direction: "vertical",
+            loop: false, // Απενεργοποίηση loop
+            allowTouchMove: true,
+            on: {
+                slideChange: function () {
+                    const activeSlide = this.slides[this.activeIndex];
+                    const isSlide21 = activeSlide.id === "slide-21";
+                    horizontalSwiper.allowSlideNext = !isSlide21;
+                    horizontalSwiper.allowSlidePrev = !isSlide21;
+                    // Απενεργοποίηση των κουμπιών πλοήγησης (δεξιά και αριστερά)
+                    horizontalSwiper.navigation.nextEl.style.display = isSlide21 ? "none" : "flex";
+                    horizontalSwiper.navigation.prevEl.style.display = isSlide21 ? "none" : "flex";
+                },
+                transitionEnd: function () {
+                    const activeSlide = this.slides[this.activeIndex];
+                    if (activeSlide.id === "slide-2") {
+                        horizontalSwiper.allowSlideNext = true;
+                        horizontalSwiper.allowSlidePrev = true;
+                        // Επαναφορά των κουμπιών πλοήγησης (δεξιά και αριστερά)
+                        horizontalSwiper.navigation.nextEl.style.display = "flex";
+                        horizontalSwiper.navigation.prevEl.style.display = "flex";
+                    }
+                }
+            }
+        });
+
+        // Λειτουργία για τα κουμπιά πλοήγησης
+        const downButton = document.querySelector('.swiper-button-down');
+        const upButton = document.querySelector('.swiper-button-up');
+
+        downButton.addEventListener('click', () => {
+            verticalSwiper.slideNext(); // Μετακίνηση στο slide21
+            downButton.style.display = 'none'; // Κρύψε το κάτω βέλος
+            upButton.style.display = 'flex'; // Εμφάνισε το πάνω βέλος
+        });
+
+        upButton.addEventListener('click', () => {
+            verticalSwiper.slidePrev(); // Μετακίνηση πίσω στο slide2
+            upButton.style.display = 'none'; // Κρύψε το πάνω βέλος
+            downButton.style.display = 'flex'; // Εμφάνισε το κάτω βέλος
+        });
+    </script>
+</body>
+</html>
