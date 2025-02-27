@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services Details</title>
+    <style>
+        .services-details {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+        }
+        .services-details .love-text {
+            font-size: 4rem;
+            color: black;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="services-details" id="services-details">
+        <div class="love-text" id="love-text">Σ' αγαπώ πολύ κοριτσάκι μου</div>
+    </div>
+
+    <script>
+        // Συνάρτηση για να επιστρέφει το κείμενο στη σωστή γλώσσα
+        function getText(lang) {
+            const texts = {
+                el: {
+                    love: 'Σ\' αγαπώ πολύ κοριτσάκι μου',
+                },
+                en: {
+                    love: 'I love you so much!!!',
+                },
+            };
+            return texts[lang].love;
+        }
+
+        // Ενημέρωση των κειμένων
+        function updateTexts(lang) {
+            const loveText = document.getElementById('love-text');
+            loveText.textContent = getText(lang);
+        }
+
+        // Έλεγχος για την αποθηκευμένη γλώσσα
+        const savedLanguage = localStorage.getItem('language') || 'el';
+        updateTexts(savedLanguage);
+
+        // Ακούει για μηνύματα από τον κύριο κώδικα
+        window.addEventListener('message', (event) => {
+            if (event.data && event.data.language) {
+                const lang = event.data.language;
+                updateTexts(lang);
+            }
+        });
+    </script>
+</body>
+</html>

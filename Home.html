@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            overflow: hidden; /* Απενεργοποίηση scroll */
+        }
+        .home {
+            height: 100%;
+            background: linear-gradient(to right, #f0f0f0 60%, white 60%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .home img {
+            max-width: 40%;
+            max-height: 60%;
+            position: absolute;
+            left: calc(60% + 2px);
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border: 0px solid rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="home">
+        <img src="img/logo_square_better.png" alt="logo">
+    </div>
+
+    <script>
+        // Έλεγχος για την αποθηκευμένη γλώσσα
+        const savedLanguage = localStorage.getItem('language') || 'el';
+        updateTexts(savedLanguage);
+
+        function updateTexts(lang) {
+            const welcomeText = document.getElementById('welcome-text');
+            if (lang === 'el') {
+                welcomeText.textContent = 'Καλώς ήρθατε';
+            } else if (lang === 'en') {
+                welcomeText.textContent = 'Welcome';
+            }
+        }
+    </script>
+</body>
+</html>

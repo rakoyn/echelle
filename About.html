@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <style>
+        .about {
+            background: linear-gradient(to right, white 66.66%, #f0f0f0 66.66%);
+            height: 100vh;
+            position: relative;
+        }
+        .about img {
+            max-width: 40%;
+            max-height: 80%;
+            position: absolute;
+            left: 15%;
+            bottom: 0;
+            z-index: 1;
+        }
+        .about .soon {
+            font-size: 6rem;
+            color: white;
+            text-align: center;
+            position: absolute;
+            left: 83.33%;
+            top: 60%;
+            transform: translate(-50%, -50%);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="about">
+        <img src="https://rakoyn.github.io/echelle/index.files/Crane.png" alt="Crane">
+        <div class="soon" id="soon-text">Soon...</div>
+    </div>
+
+    <script>
+        // Συνάρτηση για να επιστρέφει το κείμενο στη σωστή γλώσσα
+        function getText(lang) {
+            const texts = {
+                el: {
+                    soon: 'Σύντομα...',
+                },
+                en: {
+                    soon: 'Soon...',
+                },
+            };
+            return texts[lang].soon;
+        }
+
+        // Ενημέρωση των κειμένων
+        function updateTexts(lang) {
+            const soonText = document.getElementById('soon-text');
+            soonText.textContent = getText(lang);
+        }
+
+        // Έλεγχος για την αποθηκευμένη γλώσσα
+        const savedLanguage = localStorage.getItem('language') || 'el';
+        updateTexts(savedLanguage);
+
+        // Ακούει για μηνύματα από τον κύριο κώδικα
+        window.addEventListener('message', (event) => {
+            if (event.data && event.data.language) {
+                const lang = event.data.language;
+                updateTexts(lang);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>echelle website</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Noto Sans', Arial, sans-serif; /* Χρήση της Noto Sans */
+            overflow: hidden; /* Απενεργοποίηση scroll σε όλη τη σελίδα */
+        }
+        .swiper {
+            width: 100%;
+            height: calc(100vh - 100px); /* Αφαιρούμε ύψος για το footer */
+        }
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: black;
+            user-select: none; /* Απενεργοποίηση επιλογής κειμένου */
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            pointer-events: none; /* Απενεργοποίηση interaction με τα iframes */
+            overflow: hidden; /* Απενεργοποίηση scroll στο iframe */
+        }
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px; /* Ύψος footer */
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: right; /* Δεξιά στοίχιση */
+            display: flex;
+            align-items: center;
+            justify-content: flex-end; /* Δεξιά στοίχιση */
+            padding-right: 20px; /* Πάντωμα δεξιά */
+            z-index: 1000;
+            user-select: none; /* Απενεργοποίηση επιλογής κειμένου */
+        }
+
+        footer .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 5px; /* Απόσταση μεταξύ των γραμμών */
+        }
+
+        footer .footer-content div {
+            display: flex;
+            align-items: center;
+            gap: 20px; /* Απόσταση μεταξύ εικονιδίου και κειμένου */
+        }
+
+        footer .footer-content i {
+            font-size: 16px; /* Μέγεθος εικονιδίου */
+        }
+        .swiper-button-next, .swiper-button-prev, .swiper-button-down, .swiper-button-up {
+            color: black;
+            position: absolute;
+            z-index: 1000;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            user-select: none; /* Απενεργοποίηση επιλογής κειμένου */
+        }
+        .swiper-button-next {
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .swiper-button-prev {
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .swiper-button-down {
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%) rotate(90deg);
+        }
+        .swiper-button-up {
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%) rotate(0deg);
+        }
+
+        /* Οριζόντια μπάρα για τα slides */
+        .progress-bar {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px; /* Απόσταση μεταξύ των μπαρών */
+            z-index: 1000;
+        }
+        .progress-bar .bar {
+            width: 60px; /* Πλάτος κάθε μπάρας */
+            height: 4px; /* Ύψος κάθε μπάρας */
+            background-color: #ccc; /* Αδειανό χρώμα */
+            transition: background-color 0.3s ease; /* Απαλή μετάβαση */
+        }
+        .progress-bar .bar.active {
+            background-color: black; /* Χρώμα για την ενεργή μπάρα */
+        }
+
+        /* Κάθετη μπάρα για τα κατακόρυφα slides */
+        .vertical-progress-bar {
+            position: fixed;
+            top: 10%;
+            right: 20px;
+            transform: translateY(-50%);
+            display: none; /* Αρχικά κρυφή */
+            flex-direction: column;
+            gap: 10px; /* Απόσταση μεταξύ των μπαρών */
+            z-index: 1000;
+        }
+        .vertical-progress-bar .bar {
+            width: 4px; /* Πλάτος κάθε μπάρας */
+            height: 60px; /* Ύψος κάθε μπάρας */
+            background-color: #ccc; /* Αδειανό χρώμα */
+            transition: background-color 0.3s ease; /* Απαλή μετάβαση */
+        }
+        .vertical-progress-bar .bar.active {
+            background-color: black; /* Χρώμα για την ενεργή μπάρα */
+        }
+    </style>
+</head>
+<body>
+    <!-- Οριζόντια μπάρα -->
+    <div class="progress-bar">
+        <div class="bar" data-index="0"></div>
+        <div class="bar" data-index="1"></div>
+        <div class="bar" data-index="2"></div>
+    </div>
+
+    <!-- Κάθετη μπάρα -->
+    <div class="vertical-progress-bar">
+        <div class="bar" data-index="0"></div>
+        <div class="bar" data-index="1"></div>
+    </div>
+
+    <!-- Swiper -->
+    <div class="swiper horizontal-swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <iframe src="slide1.html" scrolling="no"></iframe>
+            </div>
+            <div class="swiper-slide vertical-swiper-container">
+                <div class="swiper vertical-swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <iframe src="slide2.html" scrolling="no"></iframe>
+                            <div class="swiper-button-down">></div>
+                        </div>
+                        <div class="swiper-slide">
+                            <iframe src="slide21.html" scrolling="no"></iframe>
+                            <div class="swiper-button-up">^</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <iframe src="slide3.html" scrolling="no"></iframe>
+            </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+
+    <!-- Footer -->
+     <footer>
+        <div class="footer-content">
+            <div>
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Διεύθυνση</span>
+            </div>
+            <div>
+                <i class="fas fa-phone"></i>
+                <span>Τηλέφωνο</span>
+            </div>
+            <div>
+                <i class="fas fa-envelope"></i>
+                <span>Email</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        // Οριζόντιος Swiper
+        const horizontalSwiper = new Swiper(".horizontal-swiper", {
+            direction: "horizontal",
+            loop: false, // Ενεργοποίηση loop για σωστή ενημέρωση της μπάρας
+            allowTouchMove: true,
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            on: {
+                slideChange: function () {
+                    updateHorizontalProgressBar(this.activeIndex); // Ενημέρωση της οριζόντιας μπάρας
+                    // Εμφάνιση/απόκρυψη της κάθετης μπάρας
+                    const verticalProgressBar = document.querySelector('.vertical-progress-bar');
+                    if (this.activeIndex === 1) {
+                        verticalProgressBar.style.display = 'flex'; // Εμφάνιση μόνο στο δεύτερο slide
+                    } else {
+                        verticalProgressBar.style.display = 'none'; // Απόκρυψη σε όλα τα άλλα slides
+                    }
+                },
+            },
+        });
+
+        // Κατακόρυφος Swiper
+        const verticalSwiper = new Swiper(".vertical-swiper", {
+            direction: "vertical",
+            loop: false,
+            allowTouchMove: true,
+            on: {
+                slideChange: function () {
+                    updateVerticalProgressBar(this.activeIndex); // Ενημέρωση της κάθετης μπάρας
+                    const activeSlide = this.slides[this.activeIndex];
+                    const isSlide21 = activeSlide.querySelector('iframe').src.includes('slide21.html');
+                    horizontalSwiper.allowSlideNext = !isSlide21;
+                    horizontalSwiper.allowSlidePrev = !isSlide21;
+                    horizontalSwiper.navigation.nextEl.style.display = isSlide21 ? "none" : "flex";
+                    horizontalSwiper.navigation.prevEl.style.display = isSlide21 ? "none" : "flex";
+                },
+                transitionEnd: function () {
+                    const activeSlide = this.slides[this.activeIndex];
+                    if (activeSlide.querySelector('iframe').src.includes('slide2.html')) {
+                        horizontalSwiper.allowSlideNext = true;
+                        horizontalSwiper.allowSlidePrev = true;
+                        horizontalSwiper.navigation.nextEl.style.display = "flex";
+                        horizontalSwiper.navigation.prevEl.style.display = "flex";
+                    }
+                }
+            }
+        });
+
+        // Λειτουργία για τα κουμπιά πλοήγησης
+        const downButton = document.querySelector('.swiper-button-down');
+        const upButton = document.querySelector('.swiper-button-up');
+
+        downButton.addEventListener('click', () => {
+            verticalSwiper.slideNext();
+            downButton.style.display = 'none';
+            upButton.style.display = 'flex';
+        });
+
+        upButton.addEventListener('click', () => {
+            verticalSwiper.slidePrev();
+            upButton.style.display = 'none';
+            downButton.style.display = 'flex';
+        });
+
+        // Ενημέρωση της οριζόντιας μπάρας
+        const horizontalBars = document.querySelectorAll('.progress-bar .bar');
+
+        function updateHorizontalProgressBar(activeIndex) {
+            horizontalBars.forEach((bar, index) => {
+                if (index === activeIndex) {
+                    bar.classList.add('active'); // Ενεργή μπάρα
+                } else {
+                    bar.classList.remove('active'); // Αδειανή μπάρα
+                }
+            });
+        }
+
+        // Ενημέρωση της κάθετης μπάρας
+        const verticalBars = document.querySelectorAll('.vertical-progress-bar .bar');
+
+        function updateVerticalProgressBar(activeIndex) {
+            verticalBars.forEach((bar, index) => {
+                if (index === activeIndex) {
+                    bar.classList.add('active'); // Ενεργή μπάρα
+                } else {
+                    bar.classList.remove('active'); // Αδειανή μπάρα
+                }
+            });
+        }
+
+        // Αρχικοποίηση των μπαρών
+        updateHorizontalProgressBar(0);
+        updateVerticalProgressBar(0);
+    </script>
+</body>
+</html>

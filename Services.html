@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+    <style>
+        .services {
+            height: 100vh;
+            position: relative;
+        }
+        .services img {
+            max-width: 40%;
+            max-height: 80%;
+            position: absolute;
+            left: 15%;
+            bottom: 0;
+            z-index: 1;
+        }
+        .services .under-construction {
+            position: absolute;
+            left: 83.33%;
+            top: 60%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        .services .under-construction .under {
+            font-size: 6rem;
+            color: black;
+            font-weight: bold;
+        }
+        .services .under-construction .construction {
+            font-size: 3rem;
+            color: black;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="services" id="services">
+        <img src="img/Crane.png" alt="Crane">
+        <div class="under-construction">
+            <div class="under" id="under-text">Under</div>
+            <div class="construction" id="construction-text">Construction</div>
+        </div>
+    </div>
+
+    <script>
+        // Συνάρτηση για να επιστρέφει το κείμενο στη σωστή γλώσσα
+        function getText(lang, key) {
+            const texts = {
+                el: {
+                    under: 'Υπό',
+                    construction: 'Κατασκευή',
+                },
+                en: {
+                    under: 'Under',
+                    construction: 'Construction',
+                },
+            };
+            return texts[lang][key];
+        }
+
+        // Ενημέρωση των κειμένων
+        function updateTexts(lang) {
+            const underText = document.getElementById('under-text');
+            const constructionText = document.getElementById('construction-text');
+
+            underText.textContent = getText(lang, 'under');
+            constructionText.textContent = getText(lang, 'construction');
+        }
+
+        // Έλεγχος για την αποθηκευμένη γλώσσα
+        const savedLanguage = localStorage.getItem('language') || 'el';
+        updateTexts(savedLanguage);
+
+        // Ακούει για μηνύματα από τον κύριο κώδικα
+        window.addEventListener('message', (event) => {
+            if (event.data && event.data.language) {
+                const lang = event.data.language;
+                updateTexts(lang);
+            }
+        });
+    </script>
+</body>
+</html>
