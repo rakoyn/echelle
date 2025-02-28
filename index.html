@@ -12,11 +12,11 @@
             height: 100%;
             margin: 0;
             font-family: 'Noto Sans', Arial, sans-serif;
-            overflow: hidden; /* Απενεργοποίηση scroll σε όλη τη σελίδα */
+            overflow: hidden;
         }
         .swiper {
             width: 100%;
-            height: calc(100vh - 100px); /* Ύψος μέχρι την αρχή του footer */
+            height: calc(100vh - 100px);
         }
         .swiper-slide {
             display: flex;
@@ -24,57 +24,57 @@
             align-items: center;
             font-size: 24px;
             color: black;
-            user-select: none; /* Απενεργοποίηση επιλογής κειμένου */
+            user-select: none;
         }
         iframe {
             width: 100%;
             height: 100%;
             border: none;
-            pointer-events: none; /* Απενεργοποίηση interaction με τα iframes */
-            overflow: hidden; /* Απενεργοποίηση scroll στο iframe */
+            pointer-events: none;
+            overflow: hidden;
         }
         footer {
             position: fixed;
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 100px; /* Ύψος footer */
+            height: 100px;
             background-color: rgba(0, 0, 0, 0.8);
             color: white;
             display: flex;
             align-items: center;
-            justify-content: space-between; /* Διαχωρισμός μεταξύ αριστεράς και δεξιάς πλευράς */
-            padding: 0 20px; /* Πάντωμα δεξιά και αριστερά */
+            justify-content: space-between;
+            padding: 0 20px;
             z-index: 1000;
-            user-select: none; /* Απενεργοποίηση επιλογής κειμένου */
-            font-family: Arial, sans-serif; /* Αλλαγή γραμματοσειράς σε Arial */
+            user-select: none;
+            font-family: Arial, sans-serif;
         }
         footer .footer-left {
             display: flex;
-            flex-direction: column; /* Τοποθέτηση στοιχείων το ένα κάτω από το άλλο */
-            gap: 5px; /* Απόσταση μεταξύ των στοιχείων */
+            flex-direction: column;
+            gap: 5px;
         }
         footer .footer-left a {
             color: white;
             text-decoration: none;
-            transition: opacity 0.3s ease; /* Απαλή μετάβαση για αλλαγή γλώσσας */
+            transition: opacity 0.3s ease;
         }
         footer .footer-left a:hover {
-            text-decoration: underline; /* Υπογράμμιση στο hover */
+            text-decoration: underline;
         }
         footer .footer-content {
             display: flex;
             flex-direction: column;
-            gap: 5px; /* Απόσταση μεταξύ των γραμμών */
-            margin-right: 20px; /* Απόσταση 20px από τα δεξιά */
+            gap: 5px;
+            margin-right: 20px;
         }
         footer .footer-content div {
             display: flex;
             align-items: center;
-            gap: 10px; /* Απόσταση μεταξύ εικονιδίου και κειμένου */
+            gap: 10px;
         }
         footer .footer-content i {
-            font-size: 16px; /* Μέγεθος εικονιδίου */
+            font-size: 16px;
         }
         .swiper-button-next, .swiper-button-prev, .swiper-button-down, .swiper-button-up {
             color: black;
@@ -87,7 +87,7 @@
             align-items: center;
             justify-content: center;
             font-size: 24px;
-            user-select: none; /* Απενεργοποίηση επιλογής κειμένου */
+            user-select: none;
         }
         .swiper-button-next {
             right: 10px;
@@ -109,46 +109,43 @@
             left: 50%;
             transform: translateX(-50%) rotate(0deg);
         }
-        /* Οριζόντια μπάρα για τα slides */
         .progress-bar {
             position: fixed;
             top: 20px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 10px; /* Απόσταση μεταξύ των μπαρών */
+            gap: 10px;
             z-index: 1000;
         }
         .progress-bar .bar {
-            width: 60px; /* Πλάτος κάθε μπάρας */
-            height: 4px; /* Ύψος κάθε μπάρας */
-            background-color: #ccc; /* Αδειανό χρώμα */
-            transition: background-color 0.3s ease; /* Απαλή μετάβαση */
+            width: 60px;
+            height: 4px;
+            background-color: #ccc;
+            transition: background-color 0.3s ease;
         }
         .progress-bar .bar.active {
-            background-color: black; /* Χρώμα για την ενεργή μπάρα */
+            background-color: black;
         }
-        /* Κάθετη μπάρα για τα κατακόρυφα slides */
         .vertical-progress-bar {
             position: fixed;
             bottom: 10%;
             right: 50%;
             transform: translateY(-50%);
-            display: none; /* Αρχικά κρυφή */
+            display: none;
             flex-direction: column;
-            gap: 10px; /* Απόσταση μεταξύ των μπαρών */
+            gap: 10px;
             z-index: 1000;
         }
         .vertical-progress-bar .bar {
-            width: 4px; /* Πλάτος κάθε μπάρας */
-            height: 20px; /* Ύψος κάθε μπάρας */
-            background-color: #ccc; /* Αδειανό χρώμα */
-            transition: background-color 0.3s ease; /* Απαλή μετάβαση */
+            width: 4px;
+            height: 20px;
+            background-color: #ccc;
+            transition: background-color 0.3s ease;
         }
         .vertical-progress-bar .bar.active {
-            background-color: black; /* Χρώμα για την ενεργή μπάρα */
+            background-color: black;
         }
-        /* Γλωσσικό Switcher */
         .language-switcher {
             position: fixed;
             top: 20px;
@@ -162,57 +159,112 @@
             border: none;
             font-size: 1rem;
             font-weight: bold;
-            color: #ccc; /* Ανενεργό χρώμα */
+            color: #ccc;
             cursor: pointer;
             transition: color 0.3s ease;
         }
         .language-switcher button.active {
-            color: black; /* Ενεργό χρώμα */
+            color: black;
         }
-/* Modal Styles */
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    overflow: auto; /* Ενεργοποιεί το scroll για το modal */
-}
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            overflow: auto;
+        }
+        .modal-content {
+            position: relative;
+            background-color: #fff;
+            padding: 20px;
+            width: 90%;
+            max-width: 900px;
+            height: 80%;
+            overflow: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            overflow: auto;
+            pointer-events: auto;
+        }
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 30px;
+            cursor: pointer;
+        }
 
-.modal-content {
-    position: relative;
-    background-color: #fff;
-    padding: 20px;
-    width: 80%;
-    max-width: 900px;
-    height: 80%;
-    overflow: auto; /* Ενεργοποιεί το scroll μόνο στο modal */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-    overflow: hidden; /* Αφαίρεση του scroll από το iframe */
-    pointer-events: auto;
-}
-
-.close-modal {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 30px;
-    cursor: pointer;
-}
-
+        /* Media Queries για κινητές συσκευές */
+        @media (max-width: 768px) {
+            .swiper {
+                height: calc(100vh - 80px);
+            }
+            .swiper-button-next, .swiper-button-prev {
+                display: none;
+            }
+            .modal-content {
+                width: 95%;
+                height: 90%;
+            }
+            .modal-iframe {
+                height: 90%;
+            }
+            footer {
+                height: 80px;
+                padding: 0 10px;
+            }
+            footer .footer-left {
+                flex-direction: row;
+                gap: 10px;
+            }
+            footer .footer-content {
+                display: none;
+            }
+            .progress-bar {
+                top: 10px;
+                gap: 5px;
+            }
+            .progress-bar .bar {
+                width: 40px;
+                height: 3px;
+            }
+            .vertical-progress-bar {
+                bottom: 15%;
+                gap: 5px;
+            }
+            .vertical-progress-bar .bar {
+                width: 3px;
+                height: 15px;
+            }
+            .language-switcher {
+                top: 10px;
+                right: 10px;
+                gap: 5px;
+            }
+            .language-switcher button {
+                font-size: 0.9rem;
+            }
+            .swiper-button-next, .swiper-button-prev, .swiper-button-down, .swiper-button-up {
+                width: 30px;
+                height: 30px;
+                font-size: 20px;
+            }
+            .swiper-button-down, .swiper-button-up {
+                bottom: 5px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -267,8 +319,8 @@
     <!-- Footer -->
     <footer>
         <div class="footer-left">
-        <a href="terms.html" id="terms-link">Όροι Χρήσης</a>
-        <a href="privacy.html" id="privacy-link">Πολιτική Απορρήτου</a>
+            <a href="terms.html" id="terms-link">Όροι Χρήσης</a>
+            <a href="privacy.html" id="privacy-link">Πολιτική Απορρήτου</a>
             <a href="#" id="design-link">Web Design</a>
         </div>
         <div class="footer-content">
@@ -287,23 +339,16 @@
         </div>
     </footer>
 
-<!-- Modal -->
-<div id="modal" class="modal">
-    <div class="modal-content">
-        <span class="close-modal">&times;</span>
-        <iframe id="modal-iframe" class="modal-iframe" frameborder="0"></iframe>
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <iframe id="modal-iframe" class="modal-iframe" frameborder="0"></iframe>
+        </div>
     </div>
-</div>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-
-// Ενημέρωση του γλωσσικού switcher κατά τη φόρτωση της σελίδας
-window.addEventListener('load', () => {
-    const savedLanguage = localStorage.getItem('language') || 'el';
-    setActiveLanguage(savedLanguage);
-    changeLanguage(savedLanguage); // Ενημέρωση των κειμένων κατά τη φόρτωση
-});
         // Γλωσσικό Switcher
         const grBtn = document.getElementById('gr-btn');
         const enBtn = document.getElementById('en-btn');
@@ -328,11 +373,10 @@ window.addEventListener('load', () => {
                 enBtn.classList.add('active');
                 grBtn.classList.remove('active');
             }
-            localStorage.setItem('language', lang); // Αποθήκευση της γλώσσας
+            localStorage.setItem('language', lang);
         }
 
         function changeLanguage(lang) {
-            // Αλλαγή κειμένων στο footer
             const addressText = document.getElementById('address-text');
             const phoneText = document.getElementById('phone-text');
             const emailText = document.getElementById('email-text');
@@ -356,7 +400,6 @@ window.addEventListener('load', () => {
                 designLink.textContent = 'Web Design';
             }
 
-            // Αποστολή μηνύματος σε όλα τα iframes
             const iframes = document.querySelectorAll('iframe');
             iframes.forEach(iframe => {
                 iframe.contentWindow.postMessage({ language: lang }, '*');
@@ -455,49 +498,45 @@ window.addEventListener('load', () => {
                 }
             });
         }
-// Λειτουργία για το modal
-const modal = document.getElementById('modal');
-const modalIframe = document.getElementById('modal-iframe');
-const closeModal = document.querySelector('.close-modal');
 
-// Συνάρτηση για να ανοίγει το modal με το σωστό αρχείο
-function openModal(file) {
-    const language = localStorage.getItem('language') || 'el'; // Λαμβάνει την επιλεγμένη γλώσσα
-    const filePath = language === 'en' ? `${file}_en.html` : `${file}.html`; // Προσαρμόζει το αρχείο
-    modalIframe.src = filePath;
-    modal.style.display = 'flex'; // Εμφάνιση modal με flex για να το κεντράρει
-}
+        // Λειτουργία για το modal
+        const modal = document.getElementById('modal');
+        const modalIframe = document.getElementById('modal-iframe');
+        const closeModal = document.querySelector('.close-modal');
 
-// Άνοιγμα modal όταν κάνεις κλικ στους συνδέσμους
-document.getElementById('terms-link').addEventListener('click', (e) => {
-    e.preventDefault();
-    openModal('terms'); // Ανοίγει το modal με το σωστό αρχείο
-});
+        function openModal(file) {
+            const language = localStorage.getItem('language') || 'el';
+            const filePath = language === 'en' ? `${file}_en.html` : `${file}.html`;
+            modalIframe.src = filePath;
+            modal.style.display = 'flex';
+        }
 
-document.getElementById('privacy-link').addEventListener('click', (e) => {
-    e.preventDefault();
-    openModal('privacy'); // Ανοίγει το modal με το σωστό αρχείο
-});
+        document.getElementById('terms-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal('terms');
+        });
 
-// Κλείσιμο modal όταν κάνεις κλικ στο "x"
-closeModal.addEventListener('click', () => {
-    modal.style.display = 'none';
-    modalIframe.src = ''; // Καθάρισε το iframe
-});
+        document.getElementById('privacy-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal('privacy');
+        });
 
-// Κλείσιμο modal όταν κάνεις κλικ έξω από το modal
-window.addEventListener('click', (e) => {
-    if (e.target === modal) {
-        modal.style.display = 'none';
-        modalIframe.src = ''; // Καθάρισε το iframe
-    }
-});
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+            modalIframe.src = '';
+        });
 
-// Ανίχνευση του load event του iframe για να ρυθμίσουμε το scroll
-modalIframe.addEventListener('load', function() {
-    const iframeDoc = modalIframe.contentDocument || modalIframe.contentWindow.document;
-    iframeDoc.body.style.overflow = 'hidden';  // Κατάργηση του scroll στο iframe
-});
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                modalIframe.src = '';
+            }
+        });
+
+        modalIframe.addEventListener('load', function() {
+            const iframeDoc = modalIframe.contentDocument || modalIframe.contentWindow.document;
+            iframeDoc.body.style.overflow = 'auto';
+        });
 
         // Αρχικοποίηση των μπαρών
         updateHorizontalProgressBar(0);
