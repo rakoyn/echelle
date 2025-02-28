@@ -171,17 +171,16 @@
         }
 /* Modal Styles */
 .modal {
-    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9999;
-    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.7); /* Σκοτεινός φόντος για το modal */
+    overflow: hidden; /* Αφαίρεση του scroll από το modal */
 }
 
 .modal-content {
@@ -198,11 +197,11 @@
 }
 
 .modal-iframe {
-    width: 100%;
-    height: 100%;
+    width: 80%; /* Ρυθμίστε το πλάτος του iframe όπως θέλετε */
+    height: 80%; /* Ρυθμίστε το ύψος του iframe όπως θέλετε */
     border: none;
-    overflow: auto; /* Το scroll επιτρέπεται εδώ */
-    pointer-events: auto; /* Εξασφαλίζει ότι το iframe δέχεται αλληλεπίδραση με το ποντίκι */
+    overflow: auto; /* Επιτρέπουμε το scroll στο iframe */
+    pointer-events: auto;
 }
 
 
